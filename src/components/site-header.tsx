@@ -8,7 +8,7 @@ export function SiteHeader() {
     <header className="bg-background sticky top-0 z-40 w-full border-b">
       <div className="flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0 px-4">
         <MainNav items={siteConfig.mainNav} />
-        <div className="ml-auto flex items-center space-x-4">
+        <div className="flex items-center space-x-4">
           <ModeToggle />
           <UserNav />
         </div>
