@@ -1,40 +1,42 @@
+import * as React from "react";
 import Link from "next/link";
 
+import { NavItem } from "@/types/nav";
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-export function MainNav({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLElement>) {
+import Image from "next/image";
+
+interface MainNavProps {
+  items?: NavItem[];
+}
+
+export function MainNav({ items }: MainNavProps) {
   return (
-    <nav
-      className={cn("flex items-center space-x-4 lg:space-x-6", className)}
-      {...props}
-    >
-      <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium transition-colors hover:text-primary"
-      >
-        Overview
+    <div className="flex gap-6 md:gap-10">
+      <Link href="/" className="flex items-center space-x-2">
+        <Image src="/logo.png" width={64} height={64} alt="Logo INEI" />
+        <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
-      <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Customers
-      </Link>
-      <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Products
-      </Link>
-      <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-      >
-        Settings
-      </Link>
-    </nav>
+      {items?.length ? (
+        <nav className="flex gap-6">
+          {items?.map(
+            (item, index) =>
+              item.href && (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className={cn(
+                    "flex items-center text-sm font-medium text-muted-foreground",
+                    item.disabled && "cursor-not-allowed opacity-80"
+                  )}
+                >
+                  {item.title}
+                </Link>
+              )
+          )}
+        </nav>
+      ) : null}
+    </div>
   );
 }
