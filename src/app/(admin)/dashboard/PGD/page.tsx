@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/icons";
+import { CreateOEG } from "@/components/create-OEG";
 import {
   Card,
   CardHeader,
@@ -10,7 +10,6 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import { CheckIcon } from "lucide-react";
 
 const PGDs: { title: string; description: string; content: string }[] = [
   {
@@ -59,12 +58,7 @@ export default function PGDPage() {
             <h2 className="text-3xl font-bold tracking-tight">
               Plan de gobierno digital - PGD
             </h2>
-            <div className="flex items-center space-x-2">
-              <Button>
-                <Icons.plusSquare className="mr-3" />
-                Nuevo
-              </Button>
-            </div>
+            <CreateOEG />
           </div>
           <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-4 ">
             {PGDs.map((item) => (
