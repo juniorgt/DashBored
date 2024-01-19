@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
-export default function Component() {
+export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-800">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-md shadow-md dark:bg-gray-900">
